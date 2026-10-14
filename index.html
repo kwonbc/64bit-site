@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta property="og:title" content="64bit">
+<meta property="og:description" content="iOS·Android 앱을 기획부터 출시까지 만드는 모바일 앱 개발 회사">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="64비트(주)">
+<title>64bit</title>
+<meta name="description" content="64bit는 iOS와 Android 앱을 기획부터 출시까지 만드는 모바일 앱 개발 회사입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: one 1160px column; light page, a single dark band for contact; 8×8 bit grid as the hero mark */
+:root{
+  --bg:#F6F6F4; --surface:#FFFFFF; --fg:#111111; --muted:#55554F; --line:#DDDDD8;
+  --accent:#3D6BFF; --on-accent:#FFFFFF; --bit-off:#E4E4DF;
+  --band:#111111; --band-fg:#F6F6F4; --band-muted:#B5B5B0; --band-line:#2A2A2A; --band-accent:#7C9BFF;
+  --display:'Space Grotesk','Noto Sans KR',system-ui,sans-serif;
+  --body:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121211; --surface:#1A1A18; --fg:#F2F2EE; --muted:#A8A8A1; --line:#2E2E2B;
+  --accent:#7C9BFF; --on-accent:#0B0B0A; --bit-off:#242422;
+  --band:#000000; --band-fg:#F2F2EE; --band-muted:#A8A8A1; --band-line:#242422; --band-accent:#7C9BFF;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121211; --surface:#1A1A18; --fg:#F2F2EE; --muted:#A8A8A1; --line:#2E2E2B;
+  --accent:#7C9BFF; --on-accent:#0B0B0A; --bit-off:#242422;
+  --band:#000000; --band-fg:#F2F2EE; --band-muted:#A8A8A1; --band-line:#242422; --band-accent:#7C9BFF;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--display);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{margin:0;text-wrap:balance}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+.top.scrolled{border-bottom-color:var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:72px}
+.logo{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em;text-decoration:none}
+.logo i{display:grid;grid-template-columns:repeat(2,8px);gap:2px}
+.logo i b{width:8px;height:8px;background:var(--fg)}
+.logo i b:nth-child(2){background:var(--accent)}
+.nav{display:flex;gap:4px;align-items:center}
+.nav a{text-decoration:none;font-size:15px;padding:10px 14px;border-radius:999px}
+.nav a:hover{background:var(--surface)}
+.nav .cta{background:var(--fg);color:var(--bg)}
+.nav .cta:hover{background:var(--fg);opacity:.85}
+
+/* hero */
+.hero{padding-block:clamp(64px,10vw,120px) clamp(72px,11vw,140px)}
+.hero .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:56px 72px}
+.hero-copy{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
+.hero h1{font-family:var(--display);font-size:clamp(44px,7.2vw,84px);font-weight:700;line-height:1.08;letter-spacing:-.035em}
+.hero .en{margin:0;font-family:var(--display);font-size:clamp(19px,2.2vw,24px);color:var(--muted);line-height:1.45}
+.hero .ko{margin:0;font-size:18px;color:var(--muted);max-width:34em}
+.platforms{display:flex;flex-wrap:wrap;gap:8px}
+.platforms span{font-family:var(--display);font-size:13px;font-weight:500;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 28px;border-radius:999px;font-size:16px;font-weight:500;text-decoration:none;border:1px solid var(--fg);transition:transform .15s,opacity .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.solid{background:var(--fg);color:var(--bg)}
+
+/* 8x8 bit grid */
+.bits{flex:1 1 260px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.grid64{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;width:min(100%,300px);aspect-ratio:1;max-width:100%}
+.grid64 span{background:var(--bit-off);border-radius:3px;transition:background-color .5s ease}
+.grid64 span.on{background:var(--accent)}
+.grid64 span.ink{background:var(--fg)}
+.bits figcaption{font-family:var(--display);font-size:12px;letter-spacing:.14em;color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* services */
+.services{border-top:1px solid var(--line);padding-block:clamp(72px,9vw,112px)}
+.services .wrap{display:flex;flex-wrap:wrap;gap:40px 64px}
+.services-head{flex:1 1 260px;display:flex;flex-direction:column;gap:14px}
+.services-head h2{font-size:clamp(32px,4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.2}
+.services-head p{margin:0;color:var(--muted);max-width:22em}
+.list{flex:999 1 560px;min-width:0;list-style:none;margin:0;padding:0;border-top:1px solid var(--fg)}
+.list li{display:flex;flex-wrap:wrap;gap:8px 40px;padding-block:36px;border-bottom:1px solid var(--line)}
+.list .num{font-family:var(--display);font-size:15px;color:var(--muted);width:40px;padding-top:6px;font-variant-numeric:tabular-nums}
+.list .body{flex:1 1 320px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.list h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-.01em;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px}
+.list h3 small{font-family:var(--display);font-weight:400;font-size:17px;color:var(--muted)}
+.list p{margin:0;color:var(--muted);max-width:36em}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags span{font-size:13px;padding:4px 10px;background:var(--surface);border:1px solid var(--line);border-radius:6px;color:var(--fg)}
+
+/* contact band */
+.contact{background:var(--band);color:var(--band-fg);padding-block:clamp(80px,10vw,128px)}
+.contact .wrap{display:flex;flex-direction:column;gap:24px}
+.contact .eyebrow{color:var(--band-muted)}
+.contact h2{font-size:clamp(40px,6vw,64px);font-weight:700;letter-spacing:-.03em;line-height:1.12}
+.contact .en{margin:0;font-family:var(--display);font-size:20px;color:var(--band-muted)}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:20px}
+.mail a{font-family:var(--display);font-size:clamp(24px,3.4vw,36px);color:var(--band-accent);text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:2px;overflow-wrap:anywhere;min-width:0}
+.copy{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--band-line);background:transparent;color:var(--band-fg);font:inherit;font-size:14px;cursor:pointer}
+.copy:hover{border-color:var(--band-muted)}
+.contact .note{margin:0;font-size:14px;color:var(--band-muted)}
+
+footer{background:var(--band);color:var(--band-muted);border-top:1px solid var(--band-line);padding-block:28px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 32px}
+.biz{font-style:normal;display:flex;flex-wrap:wrap;gap:4px 0;min-width:0;flex:1 1 480px;line-height:1.6}
+.biz span{white-space:nowrap}
+.biz span:not(:last-child)::after{content:"·";padding:0 10px;color:var(--band-muted);opacity:.5}
+.biz span:nth-child(4){white-space:normal}
+.biz a{color:var(--band-muted)}
+
+@media (max-width:560px){
+  .nav a:not(.cta){display:none}
+  .list .num{width:auto;padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .grid64 span,.btn{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="top-bar">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="64bit 홈"><i aria-hidden="true"><b></b><b></b><b></b><b></b></i>64bit</a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#services">서비스</a>
+      <a class="cta" href="#contact">문의하기</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">Mobile App Studio</div>
+        <h1>앱으로 만드는<br>더 나은 일상.</h1>
+        <p class="en">Better everyday life, built as apps.</p>
+        <p class="ko">64bit는 iOS와 Android 앱을 기획부터 디자인, 개발, 출시까지 만드는 신생 모바일 앱 개발 회사입니다.</p>
+        <div class="platforms" aria-label="지원 플랫폼"><span>iOS</span><span>Android</span><span>App Store</span><span>Google Play</span></div>
+        <div class="actions">
+          <a class="btn solid" href="#contact">프로젝트 문의</a>
+          <a class="btn" href="#services">서비스 보기</a>
+        </div>
+      </div>
+      <figure class="bits" aria-hidden="true">
+        <div class="grid64" id="grid64"></div>
+        <figcaption id="bitcount">8 × 8 = 64 BITS</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="services-head">
+        <div class="eyebrow">Services</div>
+        <h2>하는 일</h2>
+        <p>아이디어 단계부터 스토어에 올라간 이후까지, 앱 하나가 만들어지는 전 과정을 함께합니다.</p>
+      </div>
+      <ol class="list">
+        <li>
+          <div class="num">01</div>
+          <div class="body">
+            <h3>기획 · 디자인 <small>Planning &amp; UX/UI</small></h3>
+            <p>아이디어를 핵심 기능과 화면 흐름으로 정리하고, 쓰기 쉬운 인터페이스로 디자인합니다.</p>
+            <div class="tags"><span>서비스 기획</span><span>와이어프레임</span><span>UI 디자인</span><span>프로토타입</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="num">02</div>
+          <div class="body">
+            <h3>앱 개발 <small>App Development</small></h3>
+            <p>iOS와 Android 앱을 네이티브 또는 크로스플랫폼으로 개발합니다.</p>
+            <div class="tags"><span>iOS</span><span>Android</span><span>크로스플랫폼</span><span>서버 연동</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="num">03</div>
+          <div class="body">
+            <h3>출시 · 운영 <small>Launch &amp; Maintenance</small></h3>
+            <p>App Store와 Google Play 심사·출시를 진행하고, 이후 업데이트와 유지보수를 맡습니다.</p>
+            <div class="tags"><span>스토어 등록</span><span>업데이트</span><span>유지보수</span></div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="eyebrow">Contact</div>
+      <h2>새 프로젝트,<br>이야기 나눠요.</h2>
+      <p class="en">Let's talk about your next app.</p>
+      <div class="mail">
+        <a href="mailto:hello@64bit.co.kr" id="mail">hello@64bit.co.kr</a>
+        <button class="copy" type="button" id="copy">주소 복사</button>
+      </div>
+      <p class="note">만들고 싶은 앱의 내용과 일정을 간단히 보내주시면 답장 드립니다.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <address class="biz">
+      <span>64비트(주) 64BIT Corp.</span>
+      <span>대표 이동원</span>
+      <span>사업자등록번호 381-81-04210</span>
+      <span>인천광역시 영종구 영종대로162번길 20, 305호 F06 (운서동, 스타힐스빌딩)</span>
+      <span><a href="mailto:hello@64bit.co.kr">hello@64bit.co.kr</a></span>
+    </address>
+    <span>© 2026 64BIT Corp. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // header border on scroll
+  var bar=document.getElementById('top-bar');
+  function onScroll(){bar.classList.toggle('scrolled',window.scrollY>8)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // 8x8 bit grid: a "6" and "4" drawn in ink, the rest flicker as bits
+  var glyph=[
+    "........",
+    "........",
+    "###.#.#.",
+    "#...#.#.",
+    "###.###.",
+    "#.#...#.",
+    "###...#.",
+    "........"];
+  var g=document.getElementById('grid64'),cells=[],free=[];
+  for(var r=0;r<8;r++)for(var c=0;c<8;c++){
+    var s=document.createElement('span');
+    if(glyph[r][c]==='#')s.className='ink';else{free.push(s);if(Math.random()<.22)s.className='on';}
+    g.appendChild(s);cells.push(s);
+  }
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce){setInterval(function(){
+    var s=free[Math.floor(Math.random()*free.length)];s.classList.toggle('on');
+  },420);}
+
+  // copy email
+  var btn=document.getElementById('copy'),mail=document.getElementById('mail');
+  btn.addEventListener('click',function(){
+    var t=mail.textContent.trim();
+    function done(){btn.textContent='복사됨';setTimeout(function(){btn.textContent='주소 복사'},1600)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(mail);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);btn.textContent='선택됨 · 직접 복사하세요'}
+    try{navigator.clipboard.writeText(t).then(done,fallback)}catch(e){fallback()}
+  });
+})();
+</script>
+</body>
+</html>
